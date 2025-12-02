@@ -10,4 +10,8 @@
     <PackageReference Include="Newtonsoft.Json" Version="8.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GestionTorneos\Torneo.Modelos.csproj" />
+  </ItemGroup>
+
 </Project>
