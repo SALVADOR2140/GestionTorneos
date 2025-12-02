@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GestionTorneos\Torneo.Modelos.csproj" />
+    <ProjectReference Include="..\GestionTorneosAPI\GestionTorneos.API.csproj" />
+    <ProjectReference Include="..\GestionTorneos\GestionTorneos.csproj" />
   </ItemGroup>
 
 </Project>

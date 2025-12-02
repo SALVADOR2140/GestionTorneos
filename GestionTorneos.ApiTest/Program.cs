@@ -10,109 +10,53 @@ namespace GestionTorneos.ApiTest
         static void Main(string[] args)
         {
             var httpClient = new HttpClient();
-            var rutaJugador = "api/Jugador";
-
+            var rutaJugadores = "api/Jugadores";   // coincide con tu controller
             httpClient.BaseAddress = new Uri("https://localhost:7014/");
 
-            // LECTURA DE DATOS
-            var response = httpClient.GetAsync(rutaJugador).Result;
+            // LECTURA DE DATOS (GET)
+            var response = httpClient.GetAsync(rutaJugadores).Result;
             var json = response.Content.ReadAsStringAsync().Result;
 
             Console.WriteLine("JSON crudo de la API (GET):");
             Console.WriteLine(json);
 
-            var Jugador = JsonConvert.DeserializeObject<GestionTorneos.ApiResult<List<GestionTorneos.Jugador>>>(json);
+            var resultadoJugadores =
+                JsonConvert.DeserializeObject<GestionTorneos.ApiResult<List<GestionTorneos.Jugador>>>(json);
 
-            if (Jugador == null)
+            if (resultadoJugadores == null)
             {
                 Console.WriteLine("No se pudo deserializar a ApiResult<List<Jugador>>.");
                 Console.ReadLine();
                 return;
             }
 
-            Console.WriteLine("=== LECTURA INICIAL ===");
-            Console.WriteLine("Success: " + Jugador.Success);
-            Console.WriteLine("Message: " + Jugador.Message);
-            Console.WriteLine("Total especies: " + (Jugador.Data?.Count ?? 0));
-            Console.WriteLine("Total especies: " + (Jugador.Data?.Count ?? 0));
+            Console.WriteLine("\n=== LECTURA INICIAL ===");
+            Console.WriteLine("Success: " + resultadoJugadores.Success);
+            Console.WriteLine("Message: " + resultadoJugadores.Message);
+            Console.WriteLine("Total jugadores: " + (resultadoJugadores.Data?.Count ?? 0));
 
-            //// INSERCIÓN DE DATOS
-            //var nuevaEspecie = new Especie
-            //{
-            //    Codigo = 0,
-            //    NombreComun = "XYZ"
-            //};
-
-            //var especieJson = JsonConvert.SerializeObject(nuevaEspecie);
-            //var content = new StringContent(especieJson, Encoding.UTF8, "application/json");
-
-            //response = httpClient.PostAsync(rutaEspecies, content).Result;
-            //json = response.Content.ReadAsStringAsync().Result;
-
-            //Console.WriteLine("\nJSON crudo del POST:");
-            //Console.WriteLine(json);
-
-            //var especieCreada = JsonConvert.DeserializeObject<ApiResult<Especie>>(json);
-
-            //Console.WriteLine("\n=== INSERCIÓN ===");
-            //Console.WriteLine("Success: " + especieCreada.Success);
-            //Console.WriteLine("Message: " + especieCreada.Message);
-            //Console.WriteLine("Codigo creado: " + especieCreada.Data?.Codigo);
-
-            //Console.WriteLine("\nFIN (por ahora). Pulsa ENTER...");
-            //Console.ReadLine();
-
-            //// si no se creó bien, no sigas con actualización
-            //if (!especieCreada.Success || especieCreada.Data == null)
-            //{
-            //    Console.WriteLine("\nNo se pudo crear la especie, se detiene la prueba.");
-            //    Console.ReadLine();
-            //    return;
-            //}
-
-            //// ACTUALIZACIÓN DE DATOS
-            //especieCreada.Data.NombreComun = "XYZ Actualizado";
-
-            //especieJson = JsonConvert.SerializeObject(especieCreada.Data);
-            //content = new StringContent(especieJson, Encoding.UTF8, "application/json");
-
-            //response = httpClient.PutAsync(
-            //    $"{rutaEspecies}/{especieCreada.Data.Codigo}", content).Result;
-
-            //json = response.Content.ReadAsStringAsync().Result;
-
-            //var especieActualizada = JsonConvert.DeserializeObject<ApiResult<Especie>>(json);
-
-            //Console.WriteLine("\n=== ACTUALIZACIÓN ===");
-            //Console.WriteLine("Success: " + especieActualizada.Success);
-            //Console.WriteLine("Message: " + especieActualizada.Message);
-            //Console.WriteLine("NombreComun: " + especieActualizada.Data?.NombreComun);
-
-            //Console.WriteLine("\nFIN DE PRUEBA. Pulsa ENTER...");
-
-            // ELIMINACIÓN DE DATOS
-            int codigoEliminar = 5; // aquí pones el Código que quieras borrar
+            // ELIMINACIÓN DE DATOS (DELETE)
+            int idEliminar = 5; // aquí pones el IdJugador que quieras borrar
 
             response = httpClient.DeleteAsync(
-                $"{rutaEspecies}/{codigoEliminar}").Result;
+                $"{rutaJugadores}/{idEliminar}").Result;
 
             json = response.Content.ReadAsStringAsync().Result;
 
             Console.WriteLine("\nJSON crudo del DELETE:");
             Console.WriteLine(json);
 
-            var especieEliminada = JsonConvert.DeserializeObject<ApiResult<Especie>>(json);
+            var resultadoDelete =
+                JsonConvert.DeserializeObject<GestionTorneos.ApiResult<GestionTorneos.Jugador>>(json);
 
             Console.WriteLine("\n=== ELIMINACIÓN ===");
-            Console.WriteLine("Success: " + especieEliminada.Success);
-            Console.WriteLine("Message: " + especieEliminada.Message);
-            Console.WriteLine("Codigo eliminado: " + especieEliminada.Data?.Codigo);
+            Console.WriteLine("Success: " + resultadoDelete.Success);
+            Console.WriteLine("Message: " + resultadoDelete.Message);
+            Console.WriteLine("Id eliminado: " + resultadoDelete.Data?.IdJugador);
 
             Console.WriteLine("\nFIN. Pulsa ENTER...");
-            Console.ReadLine();
-
-
             Console.ReadLine();
         }
     }
 }
+
