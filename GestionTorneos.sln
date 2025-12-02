@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionTorneos.API", "GestionTorneosAPI\GestionTorneos.API.csproj", "{CA010611-A10C-4A99-A0D9-6F60F2FAF1FF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{D107F4C8-89CC-BEA8-D3D7-CA6B7733353D}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Torneos.ApiTest", "Torneos.ApiTest\Torneos.ApiTest.csproj", "{D26BCEFD-1707-481C-B62C-624404807A16}"
 EndProject
