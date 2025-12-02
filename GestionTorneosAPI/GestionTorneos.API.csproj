@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GestionTorneos\Torneo.Modelos.csproj" />
+    <ProjectReference Include="..\GestionTorneos\GestionTorneos.csproj" />
   </ItemGroup>
 
 </Project>
