@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GestionTorneosAPI
 {
@@ -6,11 +8,11 @@ namespace GestionTorneosAPI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<TorneosAPIContext>(options =>
+                                 //options.UseSqlServer(builder.Configuration.GetConnectionString("TorneosAPIContext.sqlServer") ?? throw new InvalidOperationException("Connection string 'TorneosAPIContext' not found.")))
+                                 //Usa PostgreSQL:
+                                 options.UseNpgsql(builder.Configuration.GetConnectionString("TorneosAPIContext.postgresql") ?? throw new InvalidOperationException("Connection string 'TorneosAPIContext.postgresql' not found.")));
 
-            builder.Services.AddDbContext<GestionTorneosAPIContext>(options =>
-            options.UseNpgsql(builder.Configuration.GetConnectionString("ZoologicoAPIContext.postgresql") ?? throw new InvalidOperationException("Connection string 'GestionTorneosAPIContext' not found."))
-
-            );
 
             // Add services to the container.
 
