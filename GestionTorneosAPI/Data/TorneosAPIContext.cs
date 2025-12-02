@@ -12,15 +12,15 @@ using GestionTorneos;
         {
         }
 
-        public DbSet<GestionTorneos.Equipo> Equipo { get; set; } = default!;
+        public DbSet<GestionTorneos.Equipo> Equipos { get; set; } = default!;
 
-public DbSet<GestionTorneos.Torneo> Torneo { get; set; } = default!;
+public DbSet<GestionTorneos.Torneo> Torneos { get; set; } = default!;
 
-public DbSet<GestionTorneos.EventoJugador> EventoJugador { get; set; } = default!;
+public DbSet<GestionTorneos.EventoJugador> EventosJugadores { get; set; } = default!;
 
-public DbSet<GestionTorneos.Jugador> Jugador { get; set; } = default!;
+public DbSet<GestionTorneos.Jugador> Jugadores { get; set; } = default!;
 
-public DbSet<GestionTorneos.Partido> Partido { get; set; } = default!;
+public DbSet<GestionTorneos.Partido> Partidos { get; set; } = default!;
 
-public DbSet<GestionTorneos.TorneoEquipo> TorneoEquipo { get; set; } = default!;
+public DbSet<GestionTorneos.TorneoEquipo> TorneosEquipos { get; set; } = default!;
     }

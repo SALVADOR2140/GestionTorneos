@@ -8,11 +8,8 @@ namespace GestionTorneosAPI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddDbContext<TorneosAPIContext>(options =>
-                                 //options.UseSqlServer(builder.Configuration.GetConnectionString("TorneosAPIContext.sqlServer") ?? throw new InvalidOperationException("Connection string 'TorneosAPIContext' not found.")))
-                                 //Usa PostgreSQL:
-                                 options.UseNpgsql(builder.Configuration.GetConnectionString("TorneosAPIContext.postgresql") ?? throw new InvalidOperationException("Connection string 'TorneosAPIContext.postgresql' not found.")));
-
+                             builder.Services.AddDbContext<TorneosAPIContext>(options =>
+                             options.UseNpgsql(builder.Configuration.GetConnectionString("Postgres") ?? throw new InvalidOperationException("Connection string 'Postgres' not found.")));
 
             // Add services to the container.
 

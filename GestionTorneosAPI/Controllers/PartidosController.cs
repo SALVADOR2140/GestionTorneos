@@ -24,14 +24,14 @@ namespace GestionTorneos.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Partido>>> GetPartido()
         {
-            return await _context.Partido.ToListAsync();
+            return await _context.Partidos.ToListAsync();
         }
 
         // GET: api/Partidos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Partido>> GetPartido(int id)
         {
-            var partido = await _context.Partido.FindAsync(id);
+            var partido = await _context.Partidos.FindAsync(id);
 
             if (partido == null)
             {
@@ -77,7 +77,7 @@ namespace GestionTorneos.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Partido>> PostPartido(Partido partido)
         {
-            _context.Partido.Add(partido);
+            _context.Partidos.Add(partido);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetPartido", new { id = partido.IdPartido }, partido);
@@ -87,13 +87,13 @@ namespace GestionTorneos.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePartido(int id)
         {
-            var partido = await _context.Partido.FindAsync(id);
+            var partido = await _context.Partidos.FindAsync(id);
             if (partido == null)
             {
                 return NotFound();
             }
 
-            _context.Partido.Remove(partido);
+            _context.Partidos.Remove(partido);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace GestionTorneos.API.Controllers
 
         private bool PartidoExists(int id)
         {
-            return _context.Partido.Any(e => e.IdPartido == id);
+            return _context.Partidos.Any(e => e.IdPartido == id);
         }
     }
 }

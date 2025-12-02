@@ -24,14 +24,14 @@ namespace GestionTorneos.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Equipo>>> GetEquipo()
         {
-            return await _context.Equipo.ToListAsync();
+            return await _context.Equipos.ToListAsync();
         }
 
         // GET: api/Equipos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Equipo>> GetEquipo(int id)
         {
-            var equipo = await _context.Equipo.FindAsync(id);
+            var equipo = await _context.Equipos.FindAsync(id);
 
             if (equipo == null)
             {
@@ -77,7 +77,7 @@ namespace GestionTorneos.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Equipo>> PostEquipo(Equipo equipo)
         {
-            _context.Equipo.Add(equipo);
+            _context.Equipos.Add(equipo);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetEquipo", new { id = equipo.IdEquipo }, equipo);
@@ -87,13 +87,13 @@ namespace GestionTorneos.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEquipo(int id)
         {
-            var equipo = await _context.Equipo.FindAsync(id);
+            var equipo = await _context.Equipos.FindAsync(id);
             if (equipo == null)
             {
                 return NotFound();
             }
 
-            _context.Equipo.Remove(equipo);
+            _context.Equipos.Remove(equipo);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace GestionTorneos.API.Controllers
 
         private bool EquipoExists(int id)
         {
-            return _context.Equipo.Any(e => e.IdEquipo == id);
+            return _context.Equipos.Any(e => e.IdEquipo == id);
         }
     }
 }

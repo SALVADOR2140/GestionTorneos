@@ -24,14 +24,14 @@ namespace GestionTorneos.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TorneoEquipo>>> GetTorneoEquipo()
         {
-            return await _context.TorneoEquipo.ToListAsync();
+            return await _context.TorneosEquipos.ToListAsync();
         }
 
         // GET: api/TorneosEquipos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TorneoEquipo>> GetTorneoEquipo(int id)
         {
-            var torneoEquipo = await _context.TorneoEquipo.FindAsync(id);
+            var torneoEquipo = await _context.TorneosEquipos.FindAsync(id);
 
             if (torneoEquipo == null)
             {
@@ -77,7 +77,7 @@ namespace GestionTorneos.API.Controllers
         [HttpPost]
         public async Task<ActionResult<TorneoEquipo>> PostTorneoEquipo(TorneoEquipo torneoEquipo)
         {
-            _context.TorneoEquipo.Add(torneoEquipo);
+            _context.TorneosEquipos.Add(torneoEquipo);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetTorneoEquipo", new { id = torneoEquipo.Id }, torneoEquipo);
@@ -87,13 +87,13 @@ namespace GestionTorneos.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTorneoEquipo(int id)
         {
-            var torneoEquipo = await _context.TorneoEquipo.FindAsync(id);
+            var torneoEquipo = await _context.TorneosEquipos.FindAsync(id);
             if (torneoEquipo == null)
             {
                 return NotFound();
             }
 
-            _context.TorneoEquipo.Remove(torneoEquipo);
+            _context.TorneosEquipos.Remove(torneoEquipo);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace GestionTorneos.API.Controllers
 
         private bool TorneoEquipoExists(int id)
         {
-            return _context.TorneoEquipo.Any(e => e.Id == id);
+            return _context.TorneosEquipos.Any(e => e.Id == id);
         }
     }
 }

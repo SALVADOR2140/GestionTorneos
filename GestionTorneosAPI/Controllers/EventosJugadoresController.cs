@@ -24,14 +24,14 @@ namespace GestionTorneos.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EventoJugador>>> GetEventoJugador()
         {
-            return await _context.EventoJugador.ToListAsync();
+            return await _context.EventosJugadores.ToListAsync();
         }
 
         // GET: api/EventosJugadores/5
         [HttpGet("{id}")]
         public async Task<ActionResult<EventoJugador>> GetEventoJugador(int id)
         {
-            var eventoJugador = await _context.EventoJugador.FindAsync(id);
+            var eventoJugador = await _context.EventosJugadores.FindAsync(id);
 
             if (eventoJugador == null)
             {
@@ -77,7 +77,7 @@ namespace GestionTorneos.API.Controllers
         [HttpPost]
         public async Task<ActionResult<EventoJugador>> PostEventoJugador(EventoJugador eventoJugador)
         {
-            _context.EventoJugador.Add(eventoJugador);
+            _context.EventosJugadores.Add(eventoJugador);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetEventoJugador", new { id = eventoJugador.IdEvento }, eventoJugador);
@@ -87,13 +87,13 @@ namespace GestionTorneos.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEventoJugador(int id)
         {
-            var eventoJugador = await _context.EventoJugador.FindAsync(id);
+            var eventoJugador = await _context.EventosJugadores.FindAsync(id);
             if (eventoJugador == null)
             {
                 return NotFound();
             }
 
-            _context.EventoJugador.Remove(eventoJugador);
+            _context.EventosJugadores.Remove(eventoJugador);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace GestionTorneos.API.Controllers
 
         private bool EventoJugadorExists(int id)
         {
-            return _context.EventoJugador.Any(e => e.IdEvento == id);
+            return _context.EventosJugadores.Any(e => e.IdEvento == id);
         }
     }
 }

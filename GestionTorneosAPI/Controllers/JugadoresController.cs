@@ -24,14 +24,14 @@ namespace GestionTorneos.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Jugador>>> GetJugador()
         {
-            return await _context.Jugador.ToListAsync();
+            return await _context.Jugadores.ToListAsync();
         }
 
         // GET: api/Jugadores/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Jugador>> GetJugador(int id)
         {
-            var jugador = await _context.Jugador.FindAsync(id);
+            var jugador = await _context.Jugadores.FindAsync(id);
 
             if (jugador == null)
             {
@@ -77,7 +77,7 @@ namespace GestionTorneos.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Jugador>> PostJugador(Jugador jugador)
         {
-            _context.Jugador.Add(jugador);
+            _context.Jugadores.Add(jugador);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetJugador", new { id = jugador.IdJugador }, jugador);
@@ -87,13 +87,13 @@ namespace GestionTorneos.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteJugador(int id)
         {
-            var jugador = await _context.Jugador.FindAsync(id);
+            var jugador = await _context.Jugadores.FindAsync(id);
             if (jugador == null)
             {
                 return NotFound();
             }
 
-            _context.Jugador.Remove(jugador);
+            _context.Jugadores.Remove(jugador);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace GestionTorneos.API.Controllers
 
         private bool JugadorExists(int id)
         {
-            return _context.Jugador.Any(e => e.IdJugador == id);
+            return _context.Jugadores.Any(e => e.IdJugador == id);
         }
     }
 }
