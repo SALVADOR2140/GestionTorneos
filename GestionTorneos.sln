@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.36603.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionTorneos", "GestionTorneos\GestionTorneos.csproj", "{F6D29E9F-28B7-4F07-8607-21B51846ECAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionTorneosAPI", "GestionTorneosAPI\GestionTorneosAPI.csproj", "{CA010611-A10C-4A99-A0D9-6F60F2FAF1FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionTorneos.API", "GestionTorneosAPI\GestionTorneos.API.csproj", "{CA010611-A10C-4A99-A0D9-6F60F2FAF1FF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionTorneos.ApiTest", "GestionTorneos.ApiTest\GestionTorneos.ApiTest.csproj", "{FB8F2A0E-0E73-4F62-8E5C-7625AC9E7C10}"
 EndProject
